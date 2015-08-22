@@ -16,11 +16,10 @@ elseif((isset($_POST["username"]) && !empty($_POST["username"])) && (isset($_POS
     $selectquery = "SELECT apikey FROM users WHERE username = '" . $username . "' AND password = '" . $password . "'";
     $res = pg_query($pgconn, $selectquery);
     if(!$res) {
-        echo "Error occured in result. Dieing.\n";
-        exit();
-    }
-    elseif(pg_num_rows($res) != 1) {
-        echo "Error occured, not found. Dieing.\n";
+        $pagetitle = "Login";
+        require_once("header.php");
+        echo "<p>Could not get result from server.</p>";
+        require_once("footer.php");
         exit();
     }
     else {
@@ -30,18 +29,5 @@ elseif((isset($_POST["username"]) && !empty($_POST["username"])) && (isset($_POS
         exit();
     }
 }
+require("login_body.php");
 ?>
-<!DOCTYPE html>
-<html lang="en-US">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title><?php require_once("config.php"); echo($orgName); ?> - Login</title>
-    </head>
-    <body>
-        <form action="login.php" method="POST">
-            <label for="username">Username: </label><input type="text" name="username" id="username"><br>
-            <label for="password">Password: </label><input type="password" name="password" id="password"><br>
-            <input type="submit" value="login">
-        </form>
-    </body>
-</html>
