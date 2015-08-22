@@ -5,4 +5,9 @@
     $updatequery = "UPDATE users SET count=" . $count . " WHERE apikey='" . $apikey . "'";
     pg_query($pgconn, $updatequery);
 }
+else {
+    require_once("config.php");
+    header("Location: " . $wapath . "index.php");
+    exit();
+}
 ?>
