@@ -18,7 +18,7 @@ elseif((isset($_POST["username"]) && !empty($_POST["username"])) && (isset($_POS
     $res = pg_query($pgconn, $inserquery);
     if(!$res) {
         echo "Error occured in result, maybe non-unique username. Dieing.\n";
-        break();
+        break;
     }
     $_SESSION["userid"] = $apikey;
     header("Location: " . $wapath . "index.php");
