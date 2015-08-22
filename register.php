@@ -14,8 +14,8 @@ elseif((isset($_POST["username"]) && !empty($_POST["username"])) && (isset($_POS
     $username = pg_escape_string($_POST["username"]);
     $apikey = hash($hash, $salt . $password . $username . time());
     require_once("conn.php");
-    $insertquery = "INSERT INTO users VALUES(\"" . $username . "\", \"" . $password . "\", \"" . $apikey . "\", 0)";
-    $res = pg_query($pgconn, $inserquery);
+    $insertquery = "INSERT INTO users VALUES ('" . $username . "', '" . $password . "', '" . $apikey . "', 0)";
+    $res = pg_query($pgconn, $insertquery);
     if(!$res) {
         echo "Error occured in result, maybe non-unique username. Dieing.\n";
         exit();
