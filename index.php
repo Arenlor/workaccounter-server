@@ -13,7 +13,7 @@
         <p>You can use <span style="font-size:smaller;"><?php echo($wapath . "submit.php"); ?></span> as your Stats URL. If you're logged in your can find your API Key below.</p>
         <?php if(isset($_SESSION["userid"]) && !empty($_SESSION["userid"])) {
             echo "<p>Your API Key is: " . $_SESSION["userid"] . "</p>";
-            echo "<p>If you'd like your API Key reset contact <a href="mailto:workaccounter@arenlor.com">Support</a>.</p>";
+            echo "<p>If you'd like your API Key reset contact <a href=\"mailto:workaccounter@arenlor.com\">Support</a>.</p>";
         } ?>
     </body>
 </html>
